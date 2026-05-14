@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatriz Ferronato | Nutrição Premium & Longevidade</title>
+    <meta name="description"
+        content="Atendimento nutricional de excelência focado em longevidade, estética e performance. Agende sua consulta VIP.">
+
+    <!-- Open Graph / WhatsApp / Instagram Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Beatriz Ferronato | Nutrição Premium">
+    <meta property="og:description"
+        content="Atendimento nutricional de excelência focado em longevidade, estética e performance. Agende sua consulta VIP.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:url" content="https://beatrizferronato.com.br">
+
+    <!-- Favicon Elegante (SVG) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22serif%22 fill=%22%23E27D60%22>B</text></svg>">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Vanilla Tilt 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <!-- ========================================== -->
+    <!-- ESPAÇO PARA O GOOGLE ANALYTICS (GA4)       -->
+    <!-- Cole seu código global do Google aqui      -->
+    <!-- ========================================== -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <!-- ========================================== -->
+    <!-- ESPAÇO PARA O PIXEL DO FACEBOOK / META     -->
+    <!-- Cole seu código do Pixel aqui              -->
+    <!-- ========================================== -->
+    <!-- <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'SEU_ID_DO_PIXEL_AQUI');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=SEU_ID_DO_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript> -->
+</head>
+
+<body class="is-loading">
+    <!-- Som Ambiente -->
+    <audio id="zen-audio" loop>
+        <source src="assets/background-music.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Zen Preloader (Concierge) -->
+    <div id="zen-preloader">
+        <div class="concierge-box glass-card magnetic" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
+            <div class="zen-logo"><span>B</span>. Ferronato</div>
+            <p>Bem-vindo(a) à experiência premium.<br>Como gostaria de ser chamado(a)?</p>
+            <div class="concierge-input-group">
+                <input type="text" id="concierge-name" placeholder="Seu nome..." autocomplete="off">
+                <button id="concierge-btn" class="magnetic">Entrar ➝</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay para Pilares -->
+    <div id="pilar-modal-overlay" class="modal-overlay">
+        <div class="pilar-modal glass-card">
+            <button class="pilar-modal-close" id="pilar-modal-close">&times;</button>
+            <h3 id="pilar-modal-title">Reeducação Premium</h3>
+            <p id="pilar-modal-desc">Descrição do pilar aqui.</p>
+            <ul class="pilar-benefits" id="pilar-modal-benefits"></ul>
+            <button class="btn-primary magnetic" id="pilar-modal-wa" style="margin-top:20px; width:100%;">Quero esse
+                plano ➝</button>
+        </div>
+    </div>
+    <!-- Aurora Background (Organic Glow) -->
+    <div class="aurora-container">
+        <div class="aurora-blob aurora-1"></div>
+        <div class="aurora-blob aurora-2"></div>
+        <div class="aurora-blob aurora-3"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Navegação Translúcida Brilhante -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo magnetic"><span>B</span>. Ferronato</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="magnetic">Início</a></li>
+                <li><a href="#sobre" class="magnetic">Sobre</a></li>
+                <li><a href="#servicos" class="magnetic">Método</a></li>
+            </ul>
+            <div class="nav-actions" style="display: flex; gap: 15px; align-items: center;">
+                <span id="nav-greeting"
+                    style="font-weight: 700; color: var(--color-peach); margin-right: 10px; display: none;"></span>
+                <button id="sound-toggle" class="sound-btn magnetic" title="Ativar Som">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path class="sound-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <line class="sound-off-slash" x1="19" y1="19" x2="23" y2="23" style="display: block;"></line>
+                    </svg>
+                </button>
+                <a href="#contato" class="btn-primary-nav magnetic">Agendar VIP</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Organic Video Slider -->
+    <section id="home" class="hero video-slider">
+        <!-- Mask for organic rounding -->
+        <div class="hero-video-wrapper">
+            <div class="hero-overlay-light"></div>
+
+            <video autoplay loop muted playsinline class="hero-bg-video active" id="video-1">
+                <source src="assets/video1.mp4" type="video/mp4">
+            </video>
+            <video loop muted playsinline class="hero-bg-video" id="video-2">
+                <source src="assets/video2.mp4" type="video/mp4">
+            </video>
+            <video loop muted playsinline class="hero-bg-video" id="video-3">
+                <source src="assets/video3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="hero-content slider-content">
+            <div class="slide-text active" id="text-1">
+                <h1 class="animate-up"><span class="user-name-display"></span>Nutrição com <br><span>Alma &
+                        Ciência</span></h1>
+                <p class="animate-up delay-1">Uma abordagem personalizada que une os mais recentes avanços científicos
+                    com o prazer de viver e comer bem.</p>
+                <a href="#servicos" class="btn-primary magnetic animate-up delay-2"><span
+                        class="user-name-cta"></span>Conheça a Experiência</a>
+            </div>
+            <div class="slide-text" id="text-2">
+                <h1 class="animate-up">Performance <br><span>Extraordinária</span></h1>
+                <p class="animate-up delay-1">Estratégias avançadas para otimizar seus treinos, acelerar a recuperação e
+                    superar seus próprios limites.</p>
+                <a href="#servicos" class="btn-primary magnetic animate-up delay-2">Alcançar Metas</a>
+            </div>
+            <div class="slide-text" id="text-3">
+                <h1 class="animate-up">Beleza que <br><span>Vem de Dentro</span></h1>
+                <p class="animate-up delay-1">Protocolos antioxidantes luxuosos para promover o rejuvenescimento e
+                    vitalidade celular de ponta a ponta.</p>
+                <a href="#servicos" class="btn-primary magnetic animate-up delay-2">Transformar-se</a>
+            </div>
+        </div>
+
+        <!-- Minimalist Floating Slider Controls -->
+        <div class="slider-controls glass-pill minimalist-bars">
+            <div class="slider-btn active magnetic" data-target="1">
+                <span class="progress-bar"></span>
+            </div>
+            <div class="slider-btn magnetic" data-target="2">
+                <span class="progress-bar"></span>
+            </div>
+            <div class="slider-btn magnetic" data-target="3">
+                <span class="progress-bar"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Marquee (Light & Airy) -->
+    <div class="marquee-wrapper light-marquee">
+        <div class="marquee">
+            <span>Vitalidade & Beleza &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Saúde Integral &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Estilo de Vida Premium &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Bem-estar Absoluto &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Vitalidade & Beleza &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Saúde Integral &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Estilo de Vida Premium &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+            <span>Bem-estar Absoluto &nbsp;&nbsp;✧&nbsp;&nbsp; </span>
+        </div>
+    </div>
+
+    <!-- Sobre Section (Organic Layout) -->
+    <section id="sobre" class="about-organic section-padding">
+        <div class="container organic-grid">
+            <div class="organic-text reveal-up">
+                <span class="subtitle-tag">A Profissional</span>
+                <h2 class="organic-title">Saúde não é restrição.<br>É <em>liberdade</em>.</h2>
+                <p class="organic-p">Meu método exclusivo foi desenhado para pessoas que exigem o melhor da vida.
+                    Acredito em planos nutricionais que se adaptam perfeitamente à sua rotina, oferecendo resultados
+                    profundos sem abrir mão do prazer.</p>
+                <div class="signature-light mt-4">
+                    <p>Beatriz Ferronato</p>
+                </div>
+            </div>
+            <div class="organic-img-wrapper reveal-up delay-1 magnetic" id="video-trigger" data-tilt data-tilt-glare
+                data-tilt-max-glare="0.2" data-tilt-max="5" data-tilt-speed="400">
+                <!-- Imagem orgânica com Play Button -->
+                <div class="img-mask video-mask">
+                    <img src="/about-video.png" alt="Beatriz Ferronato" class="organic-img">
+                    <div class="play-btn-glass">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="floating-badge">
+                    <span class="star-icon">✦</span>
+                    <p>10+ Anos de Excelência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços (Glass Cards) -->
+    <section id="servicos" class="services section-padding relative-z">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="subtitle-tag">O Método</span>
+                <h2 class="organic-title">Pilares do Sucesso</h2>
+            </div>
+
+            <div class="services-staggered-grid mt-4">
+                <!-- Card 1 -->
+                <div class="glass-card bento-card magnetic reveal-up delay-1" data-pilar-titulo="Reeducação Premium"
+                    data-pilar-desc="Uma transformação gentil e sustentável. Aprenda a fazer as melhores escolhas alimentares sem abrir mão do prazer, equilibrando seu metabolismo de forma elegante e natural."
+                    data-pilar-benefits="Metabolismo acelerado e equilibrado|Relação saudável com a comida|Redução de gordura corporal|Mais energia e disposição no dia a dia|Sem dietas restritivas">
+                    <div class="card-glow glow-sage"></div>
+                    <div class="card-content">
+                        <div class="icon-premium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h3>Reeducação<br>Premium</h3>
+                        <p>Escolhas inteligentes que equilibram seu metabolismo com elegância e facilidade no dia a dia.
+                        </p>
+                        <div class="hidden-action">
+                            <span>Descobrir ➝</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Staggered) -->
+                <div class="glass-card bento-card card-staggered magnetic reveal-up delay-2"
+                    data-pilar-titulo="Alta Performance"
+                    data-pilar-desc="Nutrição milimétrica e avançada para quem deseja ir além dos seus limites. Protocolos baseados em ciência para maximizar seu potencial físico e mental."
+                    data-pilar-benefits="Energia máxima para treinos intensos|Recuperação muscular acelerada|Foco e clareza mental prolongados|Ganho de massa magra otimizado|Performance física e cognitiva de elite">
+                    <div class="card-glow glow-peach"></div>
+                    <div class="card-content">
+                        <div class="icon-premium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
+                        </div>
+                        <h3>Alta<br>Performance</h3>
+                        <p>Nutrição milimétrica para superar limites, voltada a quem busca a excelência máxima física e
+                            mental.</p>
+                        <div class="hidden-action">
+                            <span>Descobrir ➝</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card bento-card magnetic reveal-up delay-3" data-pilar-titulo="Estética & Longevidade"
+                    data-pilar-desc="O segredo da juventude está na célula. Protocolo antioxidante premium para reverter os sinais do envelhecimento e fazer você brilhar de dentro para fora."
+                    data-pilar-benefits="Pele radiante e renovada|Produção otimizada de colágeno|Cabelo e unhas mais fortes|Redução de inflamação celular|Longevidade e qualidade de vida superior">
+                    <div class="card-glow glow-sand"></div>
+                    <div class="card-content">
+                        <div class="icon-premium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                            </svg>
+                        </div>
+                        <h3>Estética &<br>Longevidade</h3>
+                        <p>O segredo da juventude celular. Estratégias antioxidantes para brilhar de dentro para fora.
+                        </p>
+                        <div class="hidden-action">
+                            <span>Descobrir ➝</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- O Raio-X da Longevidade (Interactive Body Map) -->
+    <section id="raio-x" class="xray-section section-padding relative-z">
+        <div class="container text-center reveal-up">
+            <span class="subtitle-tag">A Ciência por Trás</span>
+            <h2 class="organic-title">O Efeito Ferronato</h2>
+            <p class="cta-subtitle">Descubra como o nosso método atua em cada célula do seu corpo.</p>
+
+            <div class="xray-container mt-4">
+                <div class="xray-body">
+                    <!-- Silhueta Minimalista SVG -->
+                    <svg viewBox="0 0 200 500" class="human-silhouette">
+                        <!-- Head -->
+                        <circle cx="100" cy="50" r="25" fill="none" stroke="var(--color-sage)" stroke-width="2"
+                            stroke-dasharray="4 4" />
+                        <!-- Body Outline -->
+                        <path
+                            d="M 100 75 C 130 90, 140 150, 130 250 C 120 350, 110 400, 110 500 M 100 75 C 70 90, 60 150, 70 250 C 80 350, 90 400, 90 500"
+                            fill="none" stroke="var(--color-sage)" stroke-width="1.5" opacity="0.6" />
+                        <!-- Arms Outline -->
+                        <path d="M 125 100 C 150 120, 160 200, 150 280 M 75 100 C 50 120, 40 200, 50 280" fill="none"
+                            stroke="var(--color-sage)" stroke-width="1.5" opacity="0.4" />
+                    </svg>
+
+                    <!-- Interactive Dots -->
+                    <div class="xray-dot" style="top: 10%; left: 50%;"
+                        data-info="Cérebro: Foco Absoluto e Clareza Mental.">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="xray-dot" style="top: 30%; left: 50%;"
+                        data-info="Coração: Reversão da Idade Cardiovascular.">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="xray-dot" style="top: 45%; left: 50%;"
+                        data-info="Intestino: Equilíbrio do Microbioma e Imunidade.">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="xray-dot" style="top: 25%; left: 75%;" data-info="Pele: Renovação Celular e Colágeno.">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- Painel de Vidro que revela a informação -->
+                <div class="xray-info-panel glass-card hidden">
+                    <h4 id="xray-title">Explore o Corpo</h4>
+                    <p id="xray-desc">Passe o mouse sobre os pontos brilhantes para entender a transformação biológica.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Vitalidade (Lead Magnet) -->
+    <section id="calculadora" class="calculator-section section-padding relative-z">
+        <div class="container reveal-up">
+            <div class="calculator-glass-box form-glass-box" data-tilt data-tilt-max="2" data-tilt-glare
+                data-tilt-max-glare="0.1">
+                <div class="text-center">
+                    <span class="subtitle-tag">Sua Saúde em Números</span>
+                    <h2 class="organic-title">Calculadora de Vitalidade</h2>
+                    <p class="cta-subtitle">Descubra sua meta ideal de hidratação e IMC agora mesmo.</p>
+                </div>
+
+                <div class="calc-inputs mt-4">
+                    <div class="form-group">
+                        <label for="calc-peso">Peso (kg)</label>
+                        <input type="number" id="calc-peso" placeholder="Ex: 65" min="30" max="250">
+                    </div>
+                    <div class="form-group">
+                        <label for="calc-altura">Altura (cm)</label>
+                        <input type="number" id="calc-altura" placeholder="Ex: 165" min="100" max="250">
+                    </div>
+                </div>
+
+                <div class="text-center mt-4" id="calc-action-container">
+                    <button id="calc-btn" class="btn-primary magnetic">Calcular e Conectar com Nutri</button>
+                </div>
+
+                <div id="calc-loading" class="calc-results hidden mt-4 text-center">
+                    <div class="success-message"
+                        style="background: rgba(226, 125, 96, 0.1); border: 1px solid var(--color-peach); padding: 20px; border-radius: 15px;">
+                        <h4 style="color: var(--color-peach); font-size: 1.2rem; margin-bottom: 10px;">Processando seu
+                            Biotipo... ⏳</h4>
+                        <p style="color: var(--color-text-main); font-size: 0.95rem;">Gerando o cálculo exato. Você será
+                            redirecionado para o WhatsApp da Beatriz em instantes!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social (Depoimentos) -->
+    <section id="depoimentos" class="testimonials section-padding relative-z">
+        <div class="container text-center reveal-up">
+            <span class="subtitle-tag">Experiências</span>
+            <h2 class="organic-title">Histórias de <em>Transformação</em></h2>
+
+            <div class="testimonials-grid mt-4">
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"Minha energia mudou completamente em 3 meses. Não sinto mais que estou
+                        em uma dieta, mas sim vivendo o meu melhor."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Camila M.</h4>
+                            <p>Plano Estética</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"O foco em performance esportiva me fez bater todos os meus recordes na
+                        maratona. A nutrição inteligente é o segredo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Roberto S.</h4>
+                            <p>Alta Performance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"O atendimento é impecável. O acompanhamento e os detalhes fazem você se
+                        sentir realmente como um cliente VIP."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Amanda V.</h4>
+                            <p>Reeducação Premium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acordeão de Dúvidas (FAQ) -->
+    <section id="faq" class="faq-section section-padding relative-z">
+        <div class="container reveal-up">
+            <div class="section-header text-center">
+                <span class="subtitle-tag">Dúvidas Comuns</span>
+                <h2 class="organic-title">Como Funciona?</h2>
+            </div>
+
+            <div class="faq-accordion mt-4">
+                <div class="faq-item glass-card magnetic">
+                    <button class="faq-question">
+                        <span>O atendimento é presencial ou online?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Realizamos atendimentos em ambos os formatos. O formato online tem a mesma excelência do
+                            presencial, com acompanhamento diário via aplicativo exclusivo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card magnetic">
+                    <button class="faq-question">
+                        <span>A clínica aceita convênios médicos?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nossos atendimentos são focados em uma experiência Premium e exclusiva (particular), porém
+                            fornecemos recibos detalhados para solicitação de reembolso no seu plano de saúde.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card magnetic">
+                    <button class="faq-question">
+                        <span>Como funciona o acompanhamento após a consulta?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você não ficará sozinho(a). Teremos um canal direto via WhatsApp para tirar dúvidas ao longo
+                            do mês, além de acesso ao aplicativo com todas as suas metas, evolução e substituições
+                            alimentares.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário Inteligente (WhatsApp CTA) -->
+    <section id="contato" class="cta-section section-padding relative-z">
+        <div class="container reveal-up">
+            <div class="cta-glass-box form-glass-box">
+                <div class="text-center">
+                    <h2 class="organic-title">Pronto para a sua melhor versão?</h2>
+                    <p class="cta-subtitle">Preencha os dados abaixo e seja direcionado automaticamente para o nosso
+                        WhatsApp VIP para agendar a sua consultoria.</p>
+                </div>
+
+                <form id="wa-form" class="wa-smart-form">
+                    <div class="form-group">
+                        <label for="wa-nome">Como podemos te chamar?</label>
+                        <input type="text" id="wa-nome" placeholder="Seu nome completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wa-plano">Qual o seu principal objetivo?</label>
+                        <select id="wa-plano" required>
+                            <option value="" disabled selected>Selecione um plano...</option>
+                            <option value="Reeducação Alimentar">Reeducação Premium</option>
+                            <option value="Alta Performance">Alta Performance Esportiva</option>
+                            <option value="Estética e Longevidade">Estética & Longevidade</option>
+                            <option value="Ainda não sei">Quero uma avaliação geral</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wa-msg">Sua mensagem ou principal dúvida</label>
+                        <textarea id="wa-msg" rows="4"
+                            placeholder="Ex: Gostaria de saber valores e disponibilidade de agenda..."
+                            required></textarea>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn-primary-large magnetic wa-submit-btn"
+                            style="border: none; cursor: pointer; width: 100%;">
+                            Enviar e Iniciar Conversa
+                        </button>
+                    </div>
+                </form>
+
+                <div class="business-hours mt-4 text-center">
+                    <p><small>Horário de Atendimento: Segunda a Sexta, das 08:00 às 17:00</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Mega Footer Elegante -->
+    <footer class="mega-footer relative-z">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span>B</span>. Ferronato</div>
+                    <p class="footer-bio">Elevando a nutrição ao nível de arte. Ciência, performance e longevidade em um
+                        atendimento exclusivo e personalizado para você.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#sobre">A Profissional</a></li>
+                        <li><a href="#servicos">O Método</a></li>
+                        <li><a href="#faq">Dúvidas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>(11) 99999-9999</li>
+                        <li>contato@nutripremium.com.br</li>
+                        <li>Av. Brigadeiro Faria Lima, 1234<br>São Paulo, SP</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Social</h4>
+                    <div class="social-icons">
+                        <a href="#" class="magnetic" title="Instagram">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="magnetic" title="Facebook">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="magnetic" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nutrição Premium. CRN 12345/SP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smart WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-float magnetic" id="wa-float-btn" target="_blank"
+        rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#ffffff">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.571-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+        </svg>
+        <span class="wa-tooltip">Atendimento VIP</span>
+    </a>
+
+
+
+    <!-- Video Modal (Hidden by default) -->
+    <div class="video-modal-overlay" id="video-modal">
+        <div class="video-modal-close" id="close-video">✕</div>
+        <div class="video-modal-content">
+            <!-- Placeholder para o vídeo real da nutricionista -->
+            <video id="nutritionist-video" controls playsinline>
+                <source src="https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_1MB.mp4"
+                    type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        </div>
+    </div>
+
+    <!-- Script Principal -->
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
